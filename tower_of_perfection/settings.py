@@ -20,7 +20,20 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '5jiv58p_n(op+epi&a%_)(li_rr9ra^@41m^csl^!uw8xc9ot@'
+try:
+    f = open('secret_key', 'rb')
+    SECRET_KEY = f.read().strip()
+except IOError:
+    # Stolen from django/core/management/commands/startproject.py.
+    from django.utils.crypto import get_random_string
+    # Create a random SECRET_KEY to put it in the main settings.
+    chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
+    SECRET_KEY = get_random_string(50, chars)
+
+    f = open('secret_key', 'wb')
+    f.write(SECRET_KEY)
+finally:
+    f.close()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
