@@ -16,6 +16,11 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+from django.views.generic import RedirectView
+
 urlpatterns = [
+    url(r'^blog/', include('top_blog.urls'), name='blog'),
     url(r'^admin/', include(admin.site.urls)),
+    # Everything else gets redirected to the blog view.
+    url(r'', RedirectView.as_view(pattern_name='blog', permanent=False)),
 ]
