@@ -18,12 +18,15 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('title', models.CharField(max_length=255)),
-                ('slug', models.SlugField(max_length=255)),
+                ('slug', models.SlugField(max_length=255, blank=True)),
                 ('publish_date', models.DateTimeField(default=django.utils.timezone.now)),
-                ('update_date', models.DateTimeField(auto_now=True)),
+                ('update_date', models.DateTimeField(null=True, blank=True)),
                 ('published', models.BooleanField()),
                 ('article', models.TextField()),
                 ('author', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
+            options={
+                'ordering': ['-publish_date'],
+            },
         ),
     ]
