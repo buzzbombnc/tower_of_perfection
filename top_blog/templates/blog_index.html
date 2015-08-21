@@ -1,0 +1,16 @@
+{% extends "master.html" %}
+
+{% block title %}Blog{% endblock %}
+
+{% block body %}
+    {% for blog in blogs %}
+        <article>
+            <header>
+                <h1>{{ blog.title }}</h1>
+                <h2>Published on <time datetime="{{ blog.publish_date.isoformat }}">{{ blog.publish_date|date:"F j, Y H:i:s" }}</time> by {{ blog.author.username }}.</h2>
+            </header>
+            {{ blog.article }}
+            <footer>Read more...</footer>
+        </article>
+    {% endfor %}
+{% endblock %}

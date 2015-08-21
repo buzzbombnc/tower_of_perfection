@@ -1,5 +1,7 @@
-from django.views.generic.base import TemplateView
+from django.views.generic.list import ListView
+from .models import Blog
 
-class Blog(TemplateView):
-    template_name = 'blog.html'
-
+class BlogIndex(ListView):
+    template_name = 'blog_index.html'
+    context_object_name = 'blogs'
+    queryset = Blog.published_objects.all()
