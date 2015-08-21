@@ -3,6 +3,11 @@ from django.conf import settings
 from django.utils import timezone
 from django.utils.text import slugify
 
+class PublishedBlog(models.Manager):
+    def get_queryset(self):
+        return super(PublishedBlog, self).get_queryset().filter(published=True)
+
+
 class Blog(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
     title = models.CharField(max_length=255)
@@ -14,6 +19,9 @@ class Blog(models.Model):
     update_date = models.DateTimeField(blank=True, null=True)
     published = models.BooleanField()
     article = models.TextField()
+
+    objects = models.Manager()
+    published_objects = PublishedBlog()
 
     def __unicode__(self):
         i = "Blog '%s' from %s (" % (self.title, self.publish_date)
