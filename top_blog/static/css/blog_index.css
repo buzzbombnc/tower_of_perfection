@@ -1,12 +1,12 @@
-article.blogindex {
+article {
     margin-bottom: 10px;
 }
 /* Blog index titles */
-article.blogindex h1 {
+article h1 {
     margin: 0px;
 }
 /* Blog index dates */
-article.blogindex h2 {
+article h2 {
     margin-top: 0px;
     margin-bottom: 20px;
 }
