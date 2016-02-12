@@ -15,7 +15,7 @@
                 <h2 class="small muted"><time datetime="{{ blog.publish_date.isoformat }}">{{ blog.publish_date|date:"F j, Y H:i:s" }}</time></h2>
             </header>
             {{ blog.formatted_article|safe }}
-            <footer class="text-right"><a href="#">Read more...</a></footer>
+            <footer class="text-right"><a href="{{  blog.get_absolute_url }}">Read more...</a></footer>
         </article>
     {% endfor %}
 {% endblock %}

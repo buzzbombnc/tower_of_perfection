@@ -1,0 +1,9 @@
+/* Blog entry titles */
+article h1 {
+    margin: 0px;
+}
+/* Blog entry dates */
+article h2 {
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
