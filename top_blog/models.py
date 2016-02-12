@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 from django.utils.text import slugify
+from django.core.urlresolvers import reverse
 
 # Markdown and the defaults.
 import markdown
@@ -56,6 +57,9 @@ class Blog(models.Model):
 
     def formatted_article(self):
         return markdown.markdown(self.article, **markdown_defaults)
+
+    def get_absolute_url(self):
+        return reverse('blog_entry', kwargs={'slug': self.slug})
 
     class Meta:
         ordering = ['-publish_date']

@@ -19,8 +19,8 @@ from django.contrib import admin
 from django.views.generic import RedirectView
 
 urlpatterns = [
-    url(r'^blog', include('top_blog.urls'), name='blog'),
+    url(r'^blog/', include('top_blog.urls')),
     url(r'^admin/', include(admin.site.urls)),
     # Everything else gets redirected to the blog view.
-    url(r'', RedirectView.as_view(url='blog', permanent=False)),
+    url(r'', RedirectView.as_view(pattern_name='blog_index', permanent=False)),
 ]
