@@ -8,24 +8,28 @@
 {% endblock %}
 
 {% block body %}
-    <article>
-        <header>
-            <h1>
-                {{ entry.title }}
-            </h1>
-            <h2 class="small muted">
-                {% if entry.published %}
-                    Published on <time datetime="{{ entry.publish_date.isoformat }}">{{ entry.publish_date|date:"F j, Y H:i:s" }}</time>
-                {% else %}
-                    <span class="label label-danger">UNPUBLISHED</span>
-                {% endif %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <article>
+                <header>
+                    <h1>
+                        {{ entry.title }}
+                    </h1>
+                    <h2 class="small muted">
+                        {% if entry.published %}
+                            Published on <time datetime="{{ entry.publish_date.isoformat }}">{{ entry.publish_date|date:"F j, Y H:i:s" }}</time>
+                        {% else %}
+                            <span class="label label-danger">UNPUBLISHED</span>
+                        {% endif %}
 
-                {% if entry.update_date %}
-                    <em>(Updated on <time datetime="{{ entry.update_date.isoformat }}">{{ entry.update_date|date:"F j, Y H:i:s" }}</time>)</em>
-                {% endif %}
-            </h2>
-        </header>
-        {{ entry.formatted_article|safe }}
-{#        <footer>Comments, sharing, categories, etc.</footer>#}
-    </article>
+                        {% if entry.update_date %}
+                            <em>(Updated on <time datetime="{{ entry.update_date.isoformat }}">{{ entry.update_date|date:"F j, Y H:i:s" }}</time>)</em>
+                        {% endif %}
+                    </h2>
+                </header>
+                {{ entry.formatted_article|safe }}
+        {#        <footer>Comments, sharing, categories, etc.</footer>#}
+            </article>
+        </div>
+    </div>
 {% endblock %}
