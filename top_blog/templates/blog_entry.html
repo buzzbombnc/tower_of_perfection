@@ -16,17 +16,17 @@
                     <h1>
                         {{ entry.title }}
                     </h1>
-                    <h2 class="small muted">
-                        {% if entry.published %}
-                            Published on <time datetime="{{ entry.publish_date.isoformat }}">{{ entry.publish_date|date:"F j, Y H:i:s" }}</time>
-                        {% else %}
-                            <span class="label label-danger">UNPUBLISHED</span>
-                        {% endif %}
-
-                        {% if entry.update_date %}
-                            <em>(Updated on <time datetime="{{ entry.update_date.isoformat }}">{{ entry.update_date|date:"F j, Y H:i:s" }}</time>)</em>
-                        {% endif %}
-                    </h2>
+                    {% if entry.published %}
+                        <span>
+                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> <time datetime="{{ entry.publish_date.isoformat }}">{{ entry.publish_date|date:"F j, Y H:i:s" }}</time>
+                            {% if entry.update_date %}
+                                &mdash; <em><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> <time datetime="{{ entry.update_date.isoformat }}">{{ entry.update_date|date:"F j, Y H:i:s" }}</time></em>
+                            {% endif %}
+                        </span>
+                    {% else %}
+                        <span class="label label-danger">UNPUBLISHED</span>
+                    {% endif %}
+                    <hr>
                 </header>
                 {{ entry.formatted_article|safe }}
         {#        <footer>Comments, sharing, categories, etc.</footer>#}

@@ -14,11 +14,17 @@
             {% for blog in blogs %}
                 <article>
                     <header>
-                        <h1>{{ blog.title }}</h1>
-                        <h2 class="small muted"><time datetime="{{ blog.publish_date.isoformat }}">{{ blog.publish_date|date:"F j, Y H:i:s" }}</time></h2>
+                        <h1><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h1>
+                        <span>
+                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> <time datetime="{{ blog.publish_date.isoformat }}">{{ blog.publish_date|date:"F j, Y H:i:s" }}</time>
+                            {% if blog.update_date %}
+                                &mdash; <em><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> <time datetime="{{ blog.update_date.isoformat }}">{{ blog.update_date|date:"F j, Y H:i:s" }}</time></em>
+                            {% endif %}
+                        </span>
+                        <hr>
                     </header>
                     {{ blog.formatted_article|safe }}
-                    <footer class="text-right"><a href="{{  blog.get_absolute_url }}">Read more...</a></footer>
+                    <footer class="text-right"><a href="{{ blog.get_absolute_url }}">Read more...</a></footer>
                 </article>
             {% endfor %}
         </div>
