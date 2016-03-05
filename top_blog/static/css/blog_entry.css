@@ -1,0 +1,20 @@
+article > p,h1,h2,h3,h4,h5,h6,dl {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+article > blockquote,pre,table {
+  margin-left: 10px;
+}
+/* The font sizes below have been chosed based on 75% of the Bootstrap default. */
+article > h1 {
+    font-size: 27px;
+}
+article > h2 {
+    font-size: 23px;
+}
+article > h3 {
+    font-size: 18px;
+}
+article > h4 {
+    font-size: 14px;
+}
