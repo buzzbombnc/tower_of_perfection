@@ -28,7 +28,9 @@
                     {% endif %}
                     <hr>
                 </header>
-                {{ entry.formatted_article|safe }}
+                <div class="article-body">
+                    {{ entry.formatted_article|safe }}
+                </div>
         {#        <footer>Comments, sharing, categories, etc.</footer>#}
             </article>
         </div>
