@@ -4,16 +4,7 @@ from django.utils import timezone
 from django.utils.text import slugify
 from django.core.urlresolvers import reverse
 
-# Markdown and the defaults.
-import markdown
-
-markdown_defaults = {
-    'extensions': ['markdown.extensions.extra', 'markdown.extensions.sane_lists'],
-    'output_format': 'html5',
-    'lazy_ol': False,
-}
-
-# TODO: Move this to settings?
+import top_markdown
 
 class PublishedBlog(models.Manager):
     def get_queryset(self):
@@ -56,7 +47,7 @@ class Blog(models.Model):
         super(Blog, self).save(*args, **kwargs)
 
     def formatted_article(self):
-        return markdown.markdown(self.article, **markdown_defaults)
+        return top_markdown.format(self.article)
 
     def get_absolute_url(self):
         return reverse('blog_entry', kwargs={'slug': self.slug})
