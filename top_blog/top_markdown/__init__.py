@@ -17,6 +17,13 @@ class TOPTree(Treeprocessor):
         # Set IMG class.
         for e in root.findall('.//img'):
             self.update_class(e, ['img-responsive', 'center-block',])
+        # Set the first paragraph to the lead.
+        e = root.find('.//p')
+        if e is not None:
+            self.update_class(e, ['lead',])
+        # Migrate any H5/H6 elements to H4.
+        for e in root.findall('.//h5') + root.findall('.//h6'):
+            e.tag = 'h4'
 
 
 class TOPExtension(Extension):
