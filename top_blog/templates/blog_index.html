@@ -23,7 +23,7 @@
                         </span>
                         <hr>
                     </header>
-                    {{ blog.formatted_article|safe }}
+                    {{ blog.formatted_preview|safe }}
                     <footer class="text-right"><a href="{{ blog.get_absolute_url }}">Read more...</a></footer>
                 </article>
             {% endfor %}

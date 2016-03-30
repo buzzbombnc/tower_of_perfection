@@ -49,6 +49,15 @@ class Blog(models.Model):
     def formatted_article(self):
         return top_markdown.format(self.article)
 
+    def formatted_preview(self):
+        # Watch the Windows line endings and split on Markdown paragraphs.
+        article = self.article.replace('\r', '').split('\n\n')
+        # Limit to 2 paras.
+        if len(article) >= 2:
+            article = article[:2]
+        article = '\n\n'.join(article)
+        return top_markdown.format(article)
+
     def get_absolute_url(self):
         return reverse('blog_entry', kwargs={'slug': self.slug})
 
