@@ -27,21 +27,14 @@ class Blog(models.Model):
     published_objects = PublishedBlog()
 
     def __unicode__(self):
-        i = "Blog '%s' from %s (" % (self.title, self.publish_date)
-        if self.published: i += 'published, '
-        i += '%d bytes)' % len(self.article)
+        i = "'%s' - %d bytes - %s" % (self.title, len(self.article), self.publish_date)
+        if self.published: i += '- published'
         return i
 
     def save(self, *args, **kwargs):
         # slug is based on the title.
         if not self.slug:
             self.slug = slugify(self.title)
-
-        # update_date is set based on whether the article is published or not.
-        if self.published:
-            self.update_date = timezone.now()
-        else:
-            self.update_date = None
 
         # Call the parent method.
         super(Blog, self).save(*args, **kwargs)
