@@ -57,3 +57,13 @@ class Blog(models.Model):
     class Meta:
         ordering = ['-publish_date']
 
+
+def blogimages_directory(instance, filename):
+    # Store the images for a given article in a private directory.
+    return "blog/%s/%s" % (instance.blog.id, filename)
+
+class BlogImages(models.Model):
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to=blogimages_directory)
+
+
