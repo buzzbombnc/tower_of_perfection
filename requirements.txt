@@ -1,2 +1,5 @@
 Django==1.9.2
 Markdown==2.6.5
+markdown-checklist==0.4.1
+# Dev on Windows requires a version with bundled binaries.
+Pillow==2.4.0
