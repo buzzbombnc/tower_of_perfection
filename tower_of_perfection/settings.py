@@ -120,3 +120,8 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = 'static_deploy'
+
+# Media files (uploads)
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = 'media'
