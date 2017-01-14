@@ -18,5 +18,6 @@ class BlogAdmin(admin.ModelAdmin):
     list_display = ('title', article_size, 'published', 'publish_date', 'update_date')
     list_filter = ('published', 'publish_date')
     save_as = True
+    fields = ('author', ('title', 'slug'), ('publish_date', 'update_date'), 'published', 'article')
     inlines = [BlogImagesInline,]
 
