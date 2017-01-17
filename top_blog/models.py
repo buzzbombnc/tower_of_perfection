@@ -40,7 +40,7 @@ class Blog(models.Model):
         super(Blog, self).save(*args, **kwargs)
 
     def formatted_article(self):
-        return top_markdown.format(self.article)
+        return top_markdown.format(self)
 
     def formatted_preview(self):
         # Watch the Windows line endings and split on Markdown paragraphs.
@@ -49,7 +49,7 @@ class Blog(models.Model):
         if len(article) >= 2:
             article = article[:2]
         article = '\n\n'.join(article)
-        return top_markdown.format(article)
+        return top_markdown.format(self, article)
 
     def get_absolute_url(self):
         return reverse('blog_entry', kwargs={'slug': self.slug})

@@ -4,6 +4,13 @@ from markdown.treeprocessors import Treeprocessor
 from markdown.extensions import Extension
 
 class TOPTree(Treeprocessor):
+    def __init__(self, *args, **kwargs):
+        # Get the Blog instance.
+        self.instance = kwargs['instance']
+        del kwargs['instance']
+
+        super(TOPTree, self).__init__(*args, **kwargs)
+        
     def update_class(self, element, class_list):
         "Adds 'class_list' to 'element's existing classes."
         cls = element.get('class') or ''
@@ -16,7 +23,15 @@ class TOPTree(Treeprocessor):
             self.update_class(e, ['table', 'table-condensed',])
         # Set IMG class.
         for e in root.findall('.//img'):
+            # Add the CSS classes.
             self.update_class(e, ['img-responsive', 'center-block',])
+            
+            # If the image src doesn't contain slashes, check the database for a blogimage that meets the criteria.
+            src = e.get('src')
+            if '/' not in src:
+                images = self.instance.blogimages_set.filter(image__endswith=src)
+                if images:
+                    e.set('src', images[0].image.url)
         # Set the first paragraph to the lead.
         e = root.find('.//p')
         if e is not None:
@@ -27,8 +42,13 @@ class TOPTree(Treeprocessor):
 
 
 class TOPExtension(Extension):
+    def __init__(self, **kwargs):
+        # Passing None makes the config value a Boolean, which is not the intention.
+        self.config = {'instance': ['', 'Blog instance to use.']}
+        super(TOPExtension, self).__init__(**kwargs)
+
     def extendMarkdown(self, md, md_globals):
-        md.treeprocessors.add('TOPTree', TOPTree(), '_end')
+        md.treeprocessors.add('TOPTree', TOPTree(instance=self.getConfig('instance')), '_end')
 
 
 markdown_defaults = {
@@ -36,11 +56,19 @@ markdown_defaults = {
         'markdown.extensions.extra',
         'markdown.extensions.sane_lists',
         'markdown_checklist.extension',
-        TOPExtension(),
     ],
     'output_format': 'html5',
     'lazy_ol': False,
 }
 
-def format(data):
-    return markdown.markdown(data, **markdown_defaults)
+def format(blog_instance, data=None):
+    """Returns the Markdown formatted 'data' using 'blog_instance'.
+    
+    If 'data' is None, the blog_instance.article is used for data."""
+    if not data:
+        data = blog_instance.article
+
+    # Use the markdown defaults, but load the instance into the Extension.
+    options = dict(markdown_defaults)
+    options['extensions'].append(TOPExtension(instance=blog_instance))
+    return markdown.markdown(data, **options)
