@@ -26,5 +26,5 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-# Everything else gets redirected to the blog view.
-urlpatterns.append(url(r'', RedirectView.as_view(pattern_name='blog_index', permanent=False)))
+# For now, the root URL leads to the blog.
+urlpatterns.append(url(r'^$', RedirectView.as_view(pattern_name='blog_index', permanent=False)))
