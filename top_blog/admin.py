@@ -13,6 +13,8 @@ class BlogImagesInline(admin.StackedInline):
     model = models.BlogImages
     verbose_name_plural = verbose_name = "Blog Images"
 
+    # TODO: Change widget to include editor auto-add and/or thumbnail.
+
 
 @admin.register(models.Blog)
 class BlogAdmin(admin.ModelAdmin):
@@ -24,4 +26,6 @@ class BlogAdmin(admin.ModelAdmin):
     save_as = True
     fields = ('author', ('title', 'slug'), ('publish_date', 'update_date'), 'published', 'article')
     inlines = [BlogImagesInline,]
+
+    # TODO: Fix ordering of BlogImagesInline.
 

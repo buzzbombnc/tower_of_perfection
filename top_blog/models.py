@@ -66,4 +66,4 @@ class BlogImages(models.Model):
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
     image = models.ImageField(upload_to=blogimages_directory)
 
-
+    # TODO: Delete file on instance delete.
