@@ -23,8 +23,9 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     url(r'^blog/', include('top_blog.urls')),
+    url(r'^page/', include('top_static.urls')),
     url(r'^admin/', include(admin.site.urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-# For now, the root URL leads to the blog.
-urlpatterns.append(url(r'^$', RedirectView.as_view(pattern_name='blog_index', permanent=False)))
+# For now, the root URL leads to the about page.
+urlpatterns.append(url(r'^$', RedirectView.as_view(pattern_name='about', permanent=False)))
