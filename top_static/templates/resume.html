@@ -3,14 +3,18 @@
 
 {% block title %}Resume{% endblock %}
 
+{% block head %}
+    <link rel="stylesheet" href="{% static "css/resume.css" %}">
+{% endblock %}
+
 {% block body %}
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
             <div class="page-header text-center">
-                <p><a href="{% static "Ken_Treadway_Systems_Engineer_Resume.pdf" %}">Downloadable PDF version of my resume.</a></p>
+                <p><a href="{% static "doc/Ken_Treadway_Systems_Engineer_Resume.pdf" %}">Downloadable PDF version of my resume.</a></p>
                 <h1>Ken Treadway</h1>
-                <img src="{% static "headshot.jpg" %}" class="img-responsive center-block"/>
+                <img src="{% static "img/headshot.jpg" %}" class="img-responsive center-block"/>
                 <p><addr>Email address: <a href="mailto:ktreadway@ktreadway.com">ktreadway@ktreadway.com</a><br />
                 <i>Alternate contact information available in downloadable resume.</i></addr></p>
                 <p>Proven cross-platform systems engineer with over 18 years of experience in solving business problems with 
