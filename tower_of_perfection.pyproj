@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{bced0fd1-813e-4ab2-963f-791e42d98687}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>manage.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{5F0BE9CA-D677-4A4D-8806-6076C0FAAD37};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Django launcher</LaunchProvider>
+    <InterpreterId>{84577591-569e-48b5-954e-e7ea9a8fe434}</InterpreterId>
+    <InterpreterVersion>2.7</InterpreterVersion>
+    <UseIISExpress>true</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="project_static\css\top.css" />
+    <Content Include="requirements.txt" />
+    <Content Include="templates\master.html" />
+    <Content Include="top_blog\fixtures\test_content.json" />
+    <Content Include="top_blog\static\css\blog_entry.css" />
+    <Content Include="top_blog\static\css\blog_index.css" />
+    <Content Include="top_blog\static\img1920.png" />
+    <Content Include="top_blog\static\img400.png" />
+    <Content Include="top_blog\static\js\blog_entry.js" />
+    <Content Include="top_blog\templates\blog.html" />
+    <Content Include="top_static\static\css\resume.css" />
+    <Content Include="top_static\static\doc\Ken_Treadway_Systems_Engineer_Resume.pdf" />
+    <Content Include="top_static\static\img\headshot.jpg" />
+    <Content Include="top_static\templates\about.html" />
+    <Content Include="top_blog\templates\blog_index.html" />
+    <Content Include="top_static\templates\resume.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="manage.py" />
+    <Compile Include="top_blog\admin.py" />
+    <Compile Include="top_blog\fixtures\test_content.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="top_blog\migrations\0001_initial.py" />
+    <Compile Include="top_blog\migrations\__init__.py" />
+    <Compile Include="top_blog\models.py" />
+    <Compile Include="top_blog\tests.py" />
+    <Compile Include="top_blog\top_markdown\__init__.py" />
+    <Compile Include="top_blog\urls.py" />
+    <Compile Include="top_blog\views.py" />
+    <Compile Include="top_blog\__init__.py" />
+    <Compile Include="top_static\apps.py" />
+    <Compile Include="top_static\urls.py" />
+    <Compile Include="top_static\views.py" />
+    <Compile Include="top_static\__init__.py" />
+    <Compile Include="tower_of_perfection\settings.py" />
+    <Compile Include="tower_of_perfection\urls.py" />
+    <Compile Include="tower_of_perfection\wsgi.py" />
+    <Compile Include="tower_of_perfection\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="project_static\" />
+    <Folder Include="project_static\css" />
+    <Folder Include="templates" />
+    <Folder Include="top_blog" />
+    <Folder Include="top_blog\fixtures\" />
+    <Folder Include="top_blog\migrations" />
+    <Folder Include="top_blog\static" />
+    <Folder Include="top_blog\static\css" />
+    <Folder Include="top_blog\static\js" />
+    <Folder Include="top_blog\templates" />
+    <Folder Include="top_blog\top_markdown" />
+    <Folder Include="top_static\" />
+    <Folder Include="top_static\static\" />
+    <Folder Include="top_static\static\css\" />
+    <Folder Include="top_static\static\doc\" />
+    <Folder Include="top_static\static\img\" />
+    <Folder Include="top_static\templates\" />
+    <Folder Include="tower_of_perfection" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="..\">
+      <Id>{84577591-569e-48b5-954e-e7ea9a8fe434}</Id>
+      <BaseInterpreter>{2af0f10d-7135-4994-9156-5d01c9c11b7e}</BaseInterpreter>
+      <Version>2.7</Version>
+      <Description>top_env (Python 2.7)</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <LibraryPath>Lib\</LibraryPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X86</Architecture>
+    </Interpreter>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:61953/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>True</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
