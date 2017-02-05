@@ -28,4 +28,4 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # For now, the root URL leads to the about page.
-urlpatterns.append(url(r'^$', RedirectView.as_view(pattern_name='about', permanent=False)))
+urlpatterns.append(url(r'^$', RedirectView.as_view(pattern_name='about', permanent=False), name='home'))
