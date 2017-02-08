@@ -1,1 +1,10 @@
 /* top.css */
+div.page-footer {
+  width: 100%;
+  margin-top: 15px;
+  border-top: 3px #000 solid;
+  padding-top: 5px;
+  text-align: center;
+  font-style: italic;
+  color: rgb(157, 157, 157);
+}
