@@ -26,6 +26,7 @@
                     {{ blog.formatted_preview|safe }}
                     <footer class="text-right"><a href="{{ blog.get_absolute_url }}">Read more...</a></footer>
                 </article>
+                {% if not forloop.last %}<hr>{% endif %}
             {% endfor %}
         </div>
         <div class="col-sm-1"></div>
