@@ -1,3 +1,17 @@
+/* blog.css */
+
+article header hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* Blog index */
+article + hr {
+  border-top: 2px #000000 solid;
+  width: 90%;
+}
+
+/* Blog entries */
 article > .article-body {
     margin-left: 10px;
     margin-right: 10px;

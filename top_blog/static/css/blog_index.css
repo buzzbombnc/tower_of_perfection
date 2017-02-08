@@ -1,9 +1,0 @@
-/* blog_index.css */
-article header hr {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-article + hr {
-  border-top: 2px #000000 solid;
-  width: 90%;
-}
