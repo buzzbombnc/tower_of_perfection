@@ -1,7 +1,7 @@
 {% extends "master.html" %}
 {% load static from staticfiles %}
 
-{% block title %}Blog Entry{% endblock %}
+{% block title %}{{ entry.title }}{% endblock %}
 
 {% block head %}
     <link rel="stylesheet" href="{% static "css/blog.css" %}">
