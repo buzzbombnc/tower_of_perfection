@@ -11,6 +11,10 @@ article + hr {
   width: 90%;
 }
 
+article footer a {
+    font-style: italic;
+}
+
 /* Blog entries */
 article > .article-body {
     margin-left: 10px;
