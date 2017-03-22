@@ -11,7 +11,7 @@
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{5F0BE9CA-D677-4A4D-8806-6076C0FAAD37};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
     <LaunchProvider>Django launcher</LaunchProvider>
-    <InterpreterId>{84577591-569e-48b5-954e-e7ea9a8fe434}</InterpreterId>
+    <InterpreterId>{7f4d5ff6-59ae-4ace-ae12-e5bc433efbc3}</InterpreterId>
     <InterpreterVersion>2.7</InterpreterVersion>
     <UseIISExpress>true</UseIISExpress>
   </PropertyGroup>
@@ -21,6 +21,7 @@
     <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Content Include="project_static\css\top.css" />
     <Content Include="requirements.txt" />
     <Content Include="templates\master.html" />
@@ -30,7 +31,7 @@
     <Content Include="top_blog\static\img1920.png" />
     <Content Include="top_blog\static\img400.png" />
     <Content Include="top_blog\static\js\blog_entry.js" />
-    <Content Include="top_blog\templates\blog.html" />
+    <Content Include="top_blog\templates\blog_entry.html" />
     <Content Include="top_static\static\css\resume.css" />
     <Content Include="top_static\static\doc\Ken_Treadway_Systems_Engineer_Resume.pdf" />
     <Content Include="top_static\static\img\headshot.jpg" />
@@ -87,6 +88,17 @@
       <BaseInterpreter>{2af0f10d-7135-4994-9156-5d01c9c11b7e}</BaseInterpreter>
       <Version>2.7</Version>
       <Description>top_env (Python 2.7)</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <LibraryPath>Lib\</LibraryPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X86</Architecture>
+    </Interpreter>
+    <Interpreter Include="env\">
+      <Id>{7f4d5ff6-59ae-4ace-ae12-e5bc433efbc3}</Id>
+      <BaseInterpreter>{2af0f10d-7135-4994-9156-5d01c9c11b7e}</BaseInterpreter>
+      <Version>2.7</Version>
+      <Description>env (Python 2.7)</Description>
       <InterpreterPath>Scripts\python.exe</InterpreterPath>
       <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
       <LibraryPath>Lib\</LibraryPath>
