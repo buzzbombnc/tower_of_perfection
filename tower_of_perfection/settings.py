@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import os.path
 
+SHARED_DIR = os.environ.setdefault("SHARED_DIR", '.')
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -20,8 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+secret_file = os.path.join(SHARED_DIR, 'secret_key')
 try:
-    f = open('secret_key', 'rb')
+    f = open(secret_file, 'rb')
     SECRET_KEY = f.read().strip()
 except IOError:
     # Stolen from django/core/management/commands/startproject.py.
@@ -30,7 +33,7 @@ except IOError:
     chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
     SECRET_KEY = get_random_string(50, chars)
 
-    f = open('secret_key', 'wb')
+    f = open(secret_file, 'wb')
     f.write(SECRET_KEY)
 finally:
     f.close()
@@ -93,7 +96,7 @@ WSGI_APPLICATION = 'tower_of_perfection.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(SHARED_DIR, 'db.sqlite3'),
     }
 }
 
@@ -125,4 +128,4 @@ STATIC_ROOT = 'static_deploy'
 # Media files (uploads)
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = 'media'
+MEDIA_ROOT = os.path.join(SHARED_DIR, 'media')
