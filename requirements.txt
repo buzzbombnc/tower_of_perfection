@@ -4,5 +4,4 @@ Pillow; sys_platform != 'win32'
 Django==1.10.5
 Markdown==2.6.8
 markdown-checklist==0.4.1
-Pillow==2.6.1
 whitenoise==3.3.0
