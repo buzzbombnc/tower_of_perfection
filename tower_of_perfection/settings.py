@@ -14,9 +14,23 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 import os.path
 
-SHARED_DIR = os.environ.setdefault("SHARED_DIR", '.')
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# Attempt to add additional environment variables.
+environment_file = os.path.join(BASE_DIR, 'environment')
+try:
+    f = open(environment_file, 'r')
+    for line in f.readlines():
+        line=line.strip()
+        if line:
+                key, value = line.split('=', 1)
+                os.environ[key]=value
+    f.close()
+except:
+    pass
+
+# By default, the shared directory is BASE_DIR.
+SHARED_DIR = os.environ.setdefault("SHARED_DIR", BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
