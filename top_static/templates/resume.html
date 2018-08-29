@@ -17,7 +17,7 @@
                 <img src="{% static "img/headshot.jpg" %}" class="img-responsive center-block"/>
                 <p><addr>Email address: <a href="mailto:ktreadway@ktreadway.com">ktreadway@ktreadway.com</a><br />
                 <i>Alternate contact information available in downloadable resume.</i></addr></p>
-                <p>Proven cross-platform systems engineer with over 18 years of experience in solving business problems with 
+                <p>Proven cross-platform systems engineer with over 20 years of experience in solving business problems with 
                 technical solutions and automation. Team-oriented leader capable of supporting existing processes, 
                 incorporating and documenting new technology, and organizing complex projects with limited supervision.</p>
             </div>
@@ -26,19 +26,19 @@
                 <div class="indent">
                 <ul>
                     <li><strong>Systems: </strong>Linux (Red Hat Enterprise Linux (RHEL)/CentOS, SUSE Linux Enterprise Server (SLES), 
-                    Debian/Ubuntu, others); UNIX (AIX, HP-UX & Solaris); Windows (Up to 2012 R2); VMware ESX/ESXi</li>
+                    Debian/Ubuntu, others); UNIX (AIX, HP-UX & Solaris); Windows (Up to 2016); VMware ESX/ESXi; BIG-IP F5 (load balancing)</li>
                     <li><strong>Languages: </strong>Python; multi-platform UNIX shell scripting; Windows CMD/batch scripting; 
                     VBScript; Javascript; PowerShell; C#; C and C++; SQL; PHP; Perl; Puppet; Ruby; HTML/CSS</li>
                     <li><strong>Productivity Software: </strong>Microsoft Office (Word, Excel, Outlook, Access, Visio); Subversion 
-                    and Git version control systems; JetBrains PyCharm, Microsoft Visual Studio, Komodo, and other integrated 
-                    development environments</li>
+                    and Git version control systems; Github (public and enterprise); JetBrains PyCharm, Microsoft Visual Studio Code, Komodo, 
+                    and other integrated development environments</li>
                     <li><strong>Server Software and Technologies: </strong>VMware vSphere; QEMU/KVM virtualization (Linux); 
                     Ansible and Puppet for configuration management; Active Directory (AD); Apache HTTP server; Django/Flask 
                     web frameworks (Python); Postfix email server; DHCP, PXE and TFTP; DNS; NFS; SMB; GlusterFS distributed 
                     filesystem; FTP; Windows Management Instrumentation (WMI); HP Server Automation (SA); HP Database and 
-                    Middleware Automation (DMA)</li>
+                    Middleware Automation (DMA); Jenkins (automation server); Docker (application containters)</li>
                     <li><strong>Databases: </strong>Microsoft SQL Server; Oracle (RAC and standalone); MySQL/MariaDB; Postgresql; 
-                    SQLite</li>
+                    SQLite; Redis</li>
                 </ul>
                 </div>
             </section>
@@ -47,11 +47,11 @@
                 <div class="indent">
                 <ul>
                     <li>Systems Engineering</li>
-                    <li>Automation/DevOps</li>
+                    <li>Automation</li>
                     <li>Software Development</li>
                     <li>Architecture</li>
                     <li>Communication</li>
-                    <li>Time Management</li>
+                    <li>DevOps/Infrastructure as Code (IaC)</li>
                     <li>Documentation</li>
                     <li>Technical Mentoring</li>
                     <li>Leadership</li>
@@ -64,8 +64,23 @@
             <section>
                 <header><h1>Experience</h1></header>
                 <div class="indent">
-                <h2>Wells Fargo/Wachovia, Winston-Salem, NC <small>(11/2005 - present)</small></h2>
-                <p>Advanced through multiple positions over a decade of service as a lead systems engineer. Accountable for 
+
+                <h2>CoverMyMeds, Columbus, OH <small>(7/2017 – present)</small></h2>
+                <h3>Senior Systems Engineer</h3>
+                <ul>
+                    <li>Responsible for maintaining and supporting the shared platform and its developers, including:
+                        <ul>
+                            <li>Configuration management using both Ansible and Puppet code</li>
+                            <li>Custom monitoring solutions written in Python and UNIX shell scripting</li>
+                            <li>Continuous Integration/Deployments (CI/CD) using Jenkins</li>
+                            <li>Load balancer configuration within the BIG-IP F5 Local Traffic Manager (LTM)</li>
+                        </ul>
+                    <li>Active participant in disaster recovery documentation/runbooks and simulations.</li>
+                    <li>Part of a team monitoring the platform via on-call pager rotation.</li>
+                </ul>
+
+                <h2>Wells Fargo/Wachovia, Winston-Salem, NC <small>(11/2005 - 7/2017)</small></h2>
+                <p>Advanced through multiple positions during twelve years of service as a lead systems engineer. Accountable for 
                 delivery and support of reliable cross-platform automation at a large scale. Responsibilities include: 
                 researching, developing and maintaining technical solutions to complex problems utilizing existing or new 
                 platforms; creation and maintenance of integrated business and technical processes; writing and maintaining 
@@ -101,7 +116,6 @@
                 <i>Accomplishments:</i>
                 <ul>
                     <li>Created and documented VMware ESX server build image to ensure consistent configuration</li>
-                    <li>Maintained ownership of VMware ESX patch repository and documentation</li>
                     <li>Designed and implemented virtualization reporting application for Fortune 500 company</li>
                     <li>Developed web application to allow live self-serve discovery of virtualization infrastructure</li>
                 </ul>
@@ -122,19 +136,13 @@
                     logon scripts, and Group Policy maintenance</li>
                     <li>Wrote several utilities in C and multiple Visual Basic scripts to facilitate automatic configuration 
                     and maintenance of servers and workstations</li>
-                    <li>Created common Windows XP system image for 75 workstations, utilizing Microsoft Sysprep and a 
-                    variety of custom utilities and scripts</li>
                 </ul>
 
                 <h2>IBM Global Services, Greensboro, NC <small>(2/2005 – 9/2005)</small></h2>
                 <h3>Migration Engineer</h3>
                 <ul>
-                    <li>Utilized Microsoft Sysprep to construct and test a Windows XP common system image for over 
-                    500 workstations</li>
-                    <li>Leveraged Symantec Ghost technology to deliver system image over the network to end-user 
-                    workstations</li>
                     <li>Wrote several utilities in C/C++ and multiple scripts to facilitate automatic configuration 
-                    of Microsoft Windows XP image</li>
+                    of Microsoft Windows XP image via Symantec Ghost</li>
                     <li>Microsoft Active Directory domain administrator in a domain consisting of over 800 users</li>
                 </ul>
 
@@ -145,7 +153,6 @@
                     integration, e-commerce and web applications</li>
                     <li>Large-scale computer rollouts (Windows, Linux, and Netware) including building, troubleshooting 
                     and client coordination</li>
-                    <li>Microsoft domain administrator in several domains consisting of over 1000 users</li>
                 </ul>
                 </div>
             </section>
@@ -154,8 +161,7 @@
                 <div class="indent">
                 <ul>
                     <li><a href="http://www.pyptug.org/">PYthon Piedmont Triad User Group</a> (PYPTUG) (2014 – present)</li>
-                    <li>The Triad Developers Guild (TDG) (2015 – present)</li>
-                    <li>Code For Winston-Salem (<a href="https://www.codeforamerica.org/">Code for America</a> Brigade) (2015 – present)</li>
+                    <li>Code For Winston-Salem/Greensboro (<a href="https://www.codeforamerica.org/">Code for America</a> Brigade) (2015 – present)</li>
                     <li>Piedmont Triad DevOps (2016 – present)</li>
                     <li><a href="http://www.progcode.co/">Progressive Coders Network</a> (2016 - present)</li>
                 </ul>
