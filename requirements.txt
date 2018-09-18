@@ -5,3 +5,4 @@ Django~=1.11
 Markdown==2.6.11
 markdown-checklist==0.4.1
 whitenoise==4.0
+django-environ==0.4.5

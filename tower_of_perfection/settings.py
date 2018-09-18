@@ -14,10 +14,13 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 import os.path
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+import environ
+# Two directories up from the settings location.
+PROJECT_ROOT = environ.Path(__file__) - 2
 
+# TODO
 # Attempt to add additional environment variables.
-environment_file = os.path.join(BASE_DIR, 'environment')
+environment_file = PROJECT_ROOT('environment')
 try:
     f = open(environment_file, 'r')
     for line in f.readlines():
@@ -29,14 +32,16 @@ try:
 except:
     pass
 
+#TODO
 # By default, the shared directory is BASE_DIR.
-SHARED_DIR = os.environ.setdefault("SHARED_DIR", BASE_DIR)
+SHARED_DIR = PROJECT_ROOT()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
+# TODO
 # SECURITY WARNING: keep the secret key used in production secret!
-secret_file = os.path.join(SHARED_DIR, 'secret_key')
+secret_file = PROJECT_ROOT('secret_key')
 try:
     f = open(secret_file, 'rb')
     SECRET_KEY = f.read().strip()
@@ -52,6 +57,7 @@ except IOError:
 finally:
     f.close()
 
+# TODO
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -88,7 +94,7 @@ ROOT_URLCONF = 'tower_of_perfection.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [PROJECT_ROOT('templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -110,7 +116,8 @@ WSGI_APPLICATION = 'tower_of_perfection.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(SHARED_DIR, 'db.sqlite3'),
+        # TODO
+        'NAME': PROJECT_ROOT('db.sqlite3'),
     }
 }
 
@@ -120,6 +127,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
+# TODO
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -128,13 +136,13 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+# TODO
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'project_static'),
+    PROJECT_ROOT('project_static'),
 ]
 
 STATIC_ROOT = 'static_deploy'
@@ -142,4 +150,5 @@ STATIC_ROOT = 'static_deploy'
 # Media files (uploads)
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(SHARED_DIR, 'media')
+# TODO
+MEDIA_ROOT = PROJECT_ROOT('media')
