@@ -10,59 +10,39 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
-import os.path
+from django.utils.crypto import get_random_string
 
 import environ
 # Two directories up from the settings location.
 PROJECT_ROOT = environ.Path(__file__) - 2
 
-# TODO
-# Attempt to add additional environment variables.
-environment_file = PROJECT_ROOT('environment')
-try:
-    f = open(environment_file, 'r')
-    for line in f.readlines():
-        line=line.strip()
-        if line:
-                key, value = line.split('=', 1)
-                os.environ[key]=value
-    f.close()
-except:
-    pass
+# Environment defaults as well as setting overrides in a file.
+env = environ.Env(
+    # Stolen from django/core/management/commands/startproject.py.
+    SECRET_KEY=(str, get_random_string(50, 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)')),
+    SHARED_DIR=(str, PROJECT_ROOT()),
+    DEBUG=(bool, True),
+    ALLOWED_HOSTS=(list, []),
+    DATABASE_URL=(environ.Env.db_url, "sqlite:///" + PROJECT_ROOT('db.sqlite3')),
+    STATIC_URL=(str, '/static/'),
+    STATIC_ROOT=(str, 'static_deploy'),
+    MEDIA_URL=(str, '/media/'),
+    MEDIA_ROOT=(str, PROJECT_ROOT('media')),
+)
+env.read_env(PROJECT_ROOT('.env'))
 
-#TODO
-# By default, the shared directory is BASE_DIR.
-SHARED_DIR = PROJECT_ROOT()
+SHARED_DIR = env('SHARED_DIR')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
-# TODO
 # SECURITY WARNING: keep the secret key used in production secret!
-secret_file = PROJECT_ROOT('secret_key')
-try:
-    f = open(secret_file, 'rb')
-    SECRET_KEY = f.read().strip()
-except IOError:
-    # Stolen from django/core/management/commands/startproject.py.
-    from django.utils.crypto import get_random_string
-    # Create a random SECRET_KEY to put it in the main settings.
-    chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
-    SECRET_KEY = get_random_string(50, chars)
+SECRET_KEY = env('SECRET_KEY')
 
-    f = open(secret_file, 'wb')
-    f.write(SECRET_KEY)
-finally:
-    f.close()
-
-# TODO
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
 # Application definition
 
@@ -114,11 +94,7 @@ WSGI_APPLICATION = 'tower_of_perfection.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        # TODO
-        'NAME': PROJECT_ROOT('db.sqlite3'),
-    }
+    'default': env.db(),
 }
 
 
@@ -127,7 +103,6 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-# TODO
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -136,19 +111,16 @@ USE_L10N = True
 
 USE_TZ = True
 
-# TODO
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
-STATIC_URL = '/static/'
+STATIC_URL = env('STATIC_URL')
 
 STATICFILES_DIRS = [
     PROJECT_ROOT('project_static'),
 ]
 
-STATIC_ROOT = 'static_deploy'
+STATIC_ROOT = env('STATIC_ROOT')
 
 # Media files (uploads)
-MEDIA_URL = '/media/'
-
-# TODO
-MEDIA_ROOT = PROJECT_ROOT('media')
+MEDIA_URL = env('MEDIA_URL')
+MEDIA_ROOT = env('MEDIA_ROOT')
