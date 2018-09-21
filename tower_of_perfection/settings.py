@@ -23,7 +23,6 @@ env = environ.Env(
     SHARED_DIR=(str, PROJECT_ROOT()),
     DEBUG=(bool, True),
     ALLOWED_HOSTS=(list, []),
-    DATABASE_URL=(environ.Env.db_url, "sqlite:///" + PROJECT_ROOT('db.sqlite3')),
     STATIC_URL=(str, '/static/'),
     STATIC_ROOT=(str, 'static_deploy'),
     MEDIA_URL=(str, '/media/'),
@@ -94,7 +93,7 @@ WSGI_APPLICATION = 'tower_of_perfection.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db(),
+    'default': env.db_url(default='sqlite:///' + environ.Path(SHARED_DIR)('db.sqlite3')),
 }
 
 
